@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects! (Professional)</title>
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicon.svg">
+
+    <!-- CSS SCRIPTS -->
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+</head>
+<body>
+    <main class="project_page">
+        <section class="showcase_container">
+            <nav>
+                <button type="button" id="menu_show">
+                    <img src="./assets/images/menuIcon.svg">
+                </button>
+				<!-- nav menu overlay -->
+                <div class="nav_overlay">
+                    <div class="overlay_container">
+                        <button type="button" id="menu_hide">
+                            <img src="./assets/images/menuIcon.svg">
+                        </button>
+                        <ul class="nav_links">
+                            <li><a href="./">Home</a></li>
+                            <li><a href="./professional_projects">Professional<span>Projects</span></a></li>
+                            <li><a href="./personal_projects">Personal<span>Projects</span></a></li>
+                            <li><a href="./contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div id="content">
+                <section class="showcase_tabs">
+                    <input type="radio" name="slider" checked id="web">
+                    <input type="radio" name="slider" id="game">
+                    <input type="radio" name="slider" id="art">
+                    <nav>
+                        <label for="web" class="web"><img src="./assets/images/skillWeb.png"></label>
+                        <label for="game" class="game"><img src="./assets/images/skillGame.png"></label>
+                        <label for="art" class="art"><img src="./assets/images/skillArt.png"></label>
+                    </nav>
+                    <section class="tab_container">
+                        <!-- web development -->
+                        <div class="tab_content web_content">
+                            <div class="projects" >
+                                <div class="project">
+                                    <div class="no_project"></div>
+                                    <div>
+                                        <h1>No Project Yet</h1>
+                                        <p>no project yet</p>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="no_project"></div>
+                                    <div>
+                                        <h1>No Project Yet</h1>
+                                        <p>no project yet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- game development -->
+                        <div class="tab_content game_content">
+                            <div class="projects">
+                                <div class="project">
+                                    <div class="no_project"></div>
+                                    <div>
+                                        <h1>No Project Yet</h1>
+                                        <p>no project yet</p>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="no_project"></div>
+                                    <div>
+                                        <h1>No Project Yet</h1>
+                                        <p>no project yet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- art -->
+                        <div class="tab_content art_content">
+                            <div class="projects">
+                                <div class="project">
+                                    <img src="./assets/images/projects/professional/art/IDYTBH.png" alt="">
+                                    <div>
+                                        <h1>Coming Soon</h1>
+                                        <p>coming soon</p>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <img src="./assets/images/projects/professional/art/FMJ.PNG" alt="">
+                                    <div>
+                                        <h1>March 2022</h1>
+                                        <p>Huge thanks to Jameel Davis for giving me this opportunity to illustrate for the book.</p>
+                                        <a href="https://www.amazon.com/Fight-My-Journey-Jior-Princeton/dp/057897309X" target="_blank">Visit!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPTS -->
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>

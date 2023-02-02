@@ -1,0 +1,1288 @@
+/* ----------------- FONTS ----------------- */
+
+@font-face {
+	font-family: Eugusto;
+	src: url(./assets/fonts/Eugusto.otf);
+}
+
+@font-face {
+	font-family: Katibeh;
+	src: url(./assets/fonts/Katibeh-Regular.ttf);
+}
+
+@font-face {
+	font-family: Ex;
+	src: url(./assets/fonts/Exetegue.ttf);
+}
+
+/* ----------------- GENERAL STYLING ----------------- */
+
+/* || CUSTOM PROPERTIES || */
+
+:root {
+    --clr-primary: #43277f;
+    --clr-secondary: #A066FF;
+    --clr-accent: #34bfff;
+    --clr-neutral: #AACCFF;
+    --clr-light: #F3FAFF;
+    --clr-dark: #E92B3E;
+    --transparent: rgba(21, 5, 55, 0.6);
+
+    --ff-primary: 'Eugusto';
+    --ff-secondary: 'Prisoner';
+    --ff-accent: 'Ex';
+}
+
+::selection {
+    background: var(--clr-dark);
+    color: var(--clr-light);
+}
+
+/* || UNIVERSAL STYLING || */
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: var(--ff-primary);
+    background: var(--clr-primary);
+    color: var(--clr-light);
+    line-height: 1;
+    text-align: center;
+    overflow:visible;
+    overflow-y: scroll;
+
+
+}
+
+nav {
+    display: grid;
+    position: relative;
+    place-items: center;
+}
+
+/* ----------------- STATIC STYLING ----------------- */
+
+
+/* || NAVIGATION || */
+
+/* --- nav menu overlay --- */ 
+/* nav menu icon */
+#menu_show img,
+#menu_hide img,
+.project_page #menu_show img{
+    width: 100%;
+}
+
+/* show nav menu */
+.home_page #menu_show,
+.contact_page #menu_show,
+.project_page #menu_show {
+    background-color: transparent;
+    position: absolute;
+    border: none;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.menu_animation {
+    opacity: 0;
+    animation: popUp 1s;
+    animation-fill-mode: forwards;
+    animation-delay: .9s;
+    transition: 2s ease-in-out;
+}
+
+.contact_page #menu_show {
+    margin-top: 7.5rem;
+}
+
+/* hide nav menu */
+.home_page #menu_hide,
+.contact_page #menu_hide,
+.project_page #menu_hide  {
+    background-color: transparent;
+    width: 100%;
+    max-width: 100px;
+    border: none;
+    cursor: pointer;
+}
+
+/* nav menu overlay design */
+.nav_overlay {
+    background-color: var(--clr-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 60px;
+    opacity: 0;
+    transform: translateY(-400rem);
+    visibility: hidden;
+    transition: all .8s ease-in-out;
+    z-index: 4;
+}
+
+.show_overlay{
+    transform: translateY(0);
+    visibility: visible;
+    z-index: 4;
+    opacity: 1;
+}
+
+/* --- nav menu links --- */ 
+/* nav menu links */
+.overlay_container a {
+    color: var(--clr-secondary);
+    text-decoration: none;
+}
+
+.overlay_container a span {
+    color: var(--clr-dark);
+    font-family: var(--ff-secondary);
+    text-transform: lowercase;
+    letter-spacing: .1rem;
+}
+
+.overlay_container ul {
+    list-style-type: none;
+}
+
+.nav_links li {
+    margin: 16px 0;
+    position: relative;
+}
+
+.nav_links li a {
+    text-transform: uppercase;
+    font-size: clamp(1rem, 4vw, 2.5rem);
+    letter-spacing: 6px;
+    font-weight: 700;
+    transition: all 300ms ease-in-out;
+    min-width: 400px;
+}
+
+/* nav menu link hover gimmick */
+.nav_links li a:hover {
+    color: var(--clr-accent);
+    background-color: var(--clr-dark);
+    padding: 1rem;
+}
+
+/* --- nav menu visibility toggle --- */
+.hide_content {
+    display: none;
+}
+
+.show_content {
+    display: block;
+}
+
+
+/* || HERO || */
+
+/* --- hero container and background --- */
+#hero {
+    background: url(./assets/images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+/* outline around hero content */
+#hero_outline {
+    outline: 0.5rem solid var(--clr-secondary);
+    width: 85%;
+    max-width: 700px;
+	padding: 1rem 1rem;
+}
+
+#hero_content {
+    background: var(--transparent);
+    display: grid;
+    max-height: 70vh;
+    padding: 3rem 1rem 2rem;
+}
+
+/* --- hero name and title --- */
+#hero_text p {
+    color: var(--clr-neutral);
+    font-family: var(--ff-secondary);
+    font-size: clamp(.5rem, 4vw, 1rem);
+    font-weight: bold;
+    margin: .5rem auto;
+}
+
+#hero_text h1,
+#hero_text h2 {
+    font-size: clamp(1rem, 8vw, 1.9rem);
+    letter-spacing: .2rem;
+	text-transform: uppercase;
+}
+
+/* --- hero portrait --- */
+#hero_image {
+	position: relative;
+    width: 100%;
+    min-width: 100px;
+    max-width: 80%;
+    margin: .5rem auto;
+    z-index: 1;
+    grid-row: 2/2;
+}
+
+#portrait_text {
+	position: absolute;
+    width: 30%;
+    top: 0;
+    left: 0;
+	z-index: 1;
+    opacity: 0;
+}
+
+.portrait {
+	position: absolute;
+    width: 75%;
+    right: 0;
+    bottom: 5%;
+    opacity: 0;
+}
+
+#portrait_shadow {
+    z-index: -1;
+    opacity: 0;
+}
+
+/* portrait background container */
+.container {
+    display: grid;
+    place-items: center;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+/* portrait background image */
+.image {
+    background: url('./assets/images/hero/hero-sm.png') no-repeat center;
+    background-size: contain;
+    width: 100%;
+    padding-top: 77%;
+    z-index: -2;
+}
+
+/* --- hero social links --- */
+#hero_links {
+    display: flex;
+    max-width: 200px;
+    margin: auto;
+}
+
+#hero_links a img {
+    width: 100%;
+    max-width: 4rem;
+    margin: 1rem auto .1rem;
+    transition: all .3s ease;
+}
+
+/* social link hover gimmick */
+#hero_links a:hover {
+    transform: scale(1.1);
+}
+
+
+/* || SKILLS || */
+
+/* --- marquee --- */
+.skill_marquee,
+.about_marquee {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.skill_marquee {
+    padding: 1rem;
+    transform: translateY(7rem) rotate(-3deg) skew(-3deg);
+    position: relative;
+    z-index: 2;
+}
+
+.skill_marquee h1,
+.about_marquee h1 {
+    font-size: 10rem;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    white-space: nowrap;
+}
+
+.skill_marquee h1 {
+    color: transparent;
+    -webkit-text-stroke: 3px var(--clr-dark);
+    font-family: var(--ff-accent);
+    animation: marquee 30s linear infinite;
+}
+
+/* --- skills content --- */
+/* skill display container */
+.showcase_tabs {
+    background: var(--transparent);
+    max-width: 1000px;
+    margin-inline: auto;
+    padding: 2rem;
+}
+
+/* allows for skill sets select */
+.showcase_tabs input {
+    display: none;
+}
+
+/* skill set positioning */
+.showcase_tabs nav {
+    display: inline-block;
+    width: 100%;
+    align-items: center;
+}
+
+/* skill set icons */
+.showcase_tabs nav img {
+    position: relative;
+    width: 20%;
+    max-width: 70px;
+    margin-inline: .4rem;
+    z-index: 2;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+/* skill set icons hover gimmick */
+.showcase_tabs nav img:hover {
+    transform: scale(1.3);
+}
+
+/* allows for skill sets to be hidden when not selected */
+.showcase_tabs .tab_content {
+    display: none;
+}
+
+/* allows for skill sets to be selected and shown */
+#web:checked ~ .tab_container .web_content,
+#game:checked ~ .tab_container .game_content,
+#art:checked ~ .tab_container .art_content {
+    display: block;
+}
+
+/* skill sets */
+#web_tab,
+#game_tab,
+#art_tab {
+    display: grid;
+    width: 100%;
+    gap: .5rem;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(0, 25rem));
+}
+
+/* skill seperation between techincal skills and professional soft skills */
+.technical_content,
+.professional_content {
+    display: grid;
+    width: 100%;
+    padding: 0 1rem;
+    justify-content: center;
+    grid-row-gap: 1rem;
+    grid-column-gap: .5rem;
+}
+
+.technical_content {
+    grid-template-columns: repeat(auto-fit, 14rem);
+}
+
+.professional_content {
+    grid-template-columns: repeat(auto-fit, 7rem);
+}
+
+/* centers content in professional skills graph */
+.professional_content .prof_skill {
+    display: grid;
+    place-items: center;
+}
+
+/* skill seperation title */
+.technical_container h2,
+.professional_container h2 {
+    margin: 2rem auto 1rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+}
+
+/* skill names */
+.technical_content h3 {
+    color: var(--clr-dark);
+    margin-top: .5rem;
+    text-align: left;
+    letter-spacing: .1rem;
+}
+
+.professional_content h3 {
+    color: var(--clr-secondary);
+    margin-top: .5rem;
+    font-size: 1.1rem;
+    
+}
+
+/* skill display for each set */
+.technical_content .skill_bar {
+    background: var(--transparent);
+    height: .7rem;
+}
+
+.professional_content .skill_bar {
+    background: var(--transparent);
+    position: relative;
+    height: 5.5rem;
+    width: 5.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* skill percentage for each set */
+.technical_content .bar {
+    background: var(--clr-secondary);
+    position: relative;
+    height: 100%;
+    margin-top: 2rem;
+    animation: fillBars 1.3s 1;
+}
+
+.professional_content .bar {
+    background: var(--clr-dark);
+    position: absolute;
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    animation: fillGraph 1.3s 1;
+    animation-fill-mode: forwards;
+}
+
+/* displays percentage in small indicator */
+.technical_content .bar::before {
+    background: var(--clr-dark);
+    position: absolute;
+    width: 3rem;
+    top: -2.7rem;
+    right: 0rem;
+    padding: .5rem;
+    font-weight: bold;
+    content: attr(per);
+    transform: translateX(50%);
+}
+
+.technical_content .bar::after {
+    content: "";
+    background: var(--clr-dark);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -1rem;
+    right: 0rem;
+    transform: translateX(50%) rotate(45deg);
+}
+
+/* displays percentage inside */
+.professional_content .bar::after {
+    content: attr(per);
+    position: relative;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    letter-spacing: .1rem;
+}
+
+
+/* || STATUS || */
+
+/* --- status container and content --- */
+#status_container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5rem;
+    padding: 14rem 0;
+    overflow: hidden;
+}
+
+/* allows for 3d effect on text circle and eye */
+#status_content {
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+}
+
+/* the menu eye icon I made is used here */
+#status_content img {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: 25rem;
+    height: 25rem;
+    animation: float 1.5s linear infinite;
+}
+
+/* pupil movement */
+#status_content #pupil {
+    position: absolute;
+    width: 8rem;
+    padding-top: 2.5rem;
+    animation: shake 2.5s linear infinite;
+}
+
+/* allows for status text to have 3d movement */
+#status_content h1 {
+    transform-style: preserve-3d;
+    animation: animateText 10s linear infinite;
+}
+
+/* status text decoration */
+#status_content h1 span {
+    background-color: var(--clr-secondary);
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: 3rem;
+    height: 3.5rem;
+    top: 3rem;
+    left: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    text-transform: uppercase;
+    transform: rotateY(calc(var(--i) * calc(360deg / 35)))translateZ(19rem);
+}
+
+#status_content span::before {
+    content: '';
+    background-color: var(--clr-primary);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateZ(-5px);
+}
+
+
+/* || ABOUT || */
+/* --- about container and content --- */
+#about_web {
+    background-color: var(--transparent);
+    border: 5px dashed var(--clr-dark);
+    display: grid;
+    position: relative;
+    max-width: 500px;
+    margin-inline: auto;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+/* about 2 positioning */
+#about_art {
+    display: flex;
+    margin: 2rem;
+    column-gap: 3rem;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+/* about 2 styling */
+#about_art section {
+    background-color: var(--clr-dark);
+    width: 40rem;
+}
+
+/* --- web design --- */
+/* marquee */
+.about_marquee {
+    grid-column: 1/-1;
+    grid-row: 1/1;
+}
+
+#about_web .about_marquee h1 {
+    color: var(--clr-dark);
+    animation: marquee 60s linear infinite;
+}
+
+/* cute waving gif I made to greet visitors */
+#about_web img {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    min-width: 50%;
+    top: -7rem;
+    right: -4rem;
+    grid-column: 1/-1;
+    grid-row: 2/2;
+}
+
+/* experience */
+#about_web p {
+    color: var(--clr-dark);
+    -webkit-text-stroke: 1px var(--transparent);
+    background-color: var(--transparent);
+    font-family: var(--ff-accent);
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: 50%;
+    top: 10rem;
+    left: -.1rem;
+    padding: 2rem;
+    font-size: 1.9rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    transform: rotate(-10deg);
+}
+
+/* highlighted text */
+#about_web h2 span {
+    color: var(--clr-secondary);
+}
+
+/* about me text */
+#about_web h2 {
+    color: var(--clr-neutral);
+    font-family: var(--ff-secondary);
+    font-size: 1.5rem;
+    position: relative;
+    margin: -6rem 1rem .5rem;
+    z-index: 2;
+    text-align: left;
+    align-self: center;
+    grid-column: 1/-1;
+    grid-row: 3/3;
+}
+
+/* --- game dev and art --- */
+#about_art h2,
+#about_art h3 {
+    font-family: var(--ff-secondary);
+}
+
+#about_art #about_art_card {
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* about me text */
+#about_art h2 {
+    margin-bottom: 2rem;
+    line-height: 2rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+/* highlighted text */
+#about_art span {
+    color: var(--clr-dark);
+    background-color: var(--clr-accent);
+    padding: .2rem .5rem;
+}
+
+/* outline outside motivation text */
+#about_art div {
+    border: 3px dashed var(--clr-accent);
+    width: 100%;
+    padding: 1rem;
+    letter-spacing: 1px;
+    line-height: 1.5rem;
+    margin-bottom: 6rem;
+}
+
+/* motivation text */
+#about_art div h1 {
+    margin-bottom: 1rem;
+}
+
+/* cute drawing I made to greet visitors */
+#about_art img {
+    width: 14.5rem;
+    position: absolute;
+    bottom: -3.2rem;
+    right: .3rem;
+}
+
+
+/* || FOOTER || */
+footer {
+    color: var(--clr-secondary);
+    background-color: var(--transparent);
+    padding: 3.5rem;
+    font-family: var(--ff-secondary);
+}
+
+footer p {
+    margin-top: 1rem;
+}
+
+
+/* || PROJECTS || */
+
+/* --- projects navigation --- */
+.project_page nav {
+    margin-top: 2rem;
+}
+
+/* --- projects container and content --- */
+.project_page .showcase_container {
+    position: relative;
+    margin: 4rem auto 2rem;
+}
+
+/* project page menu icon */
+.project_page #menu_show {
+    max-width: 120px;
+}
+
+/* image and video width */
+.project_page img,
+.project_page video{
+    max-width: 300px;
+}
+
+/* game content added width for better readability */
+.project_page .game_content video,
+.project_page .game_content div,
+.project_page .game_content img {
+    width: 100%;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+/* project page tab container */
+.project_page .tab_container {
+    margin-top: 2rem;
+}
+
+/* projects alignment */
+.projects {
+    display: grid;
+    width: 100%;
+    gap: .5rem;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(0, 20rem));
+}
+
+.project_page .game_content .projects {
+    display: flex;
+    width: 100%;
+    gap: .5rem;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* project placeholder */
+.project_page .no_project {
+    background-color: var(--transparent);
+    height: 40rem;
+    max-height: 300px;
+}
+
+/* project page positioning */
+.project_page {
+    margin: 2rem 0 1rem;
+}
+
+/* project name / dates */
+.project_page h1 {
+    color: var(--clr-dark);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 1rem auto .5rem;
+}
+
+/* project description */
+.project_page p {
+    color: var(--clr-secondary);
+    letter-spacing: .1rem;
+    font-size: 1rem;
+    margin-bottom: .9rem;
+}
+
+/* project links */
+.project_page a {
+    text-decoration: none;
+    color: var(--clr-dark);
+    letter-spacing: .1rem;
+    font-size: 1rem;
+}
+
+/* project links hover gimmick */
+.project_page a:hover {
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+    transition: .3s ease;
+    padding: .6rem 4rem;
+}
+
+
+/* || CONTACT || */
+
+/* --- contact content --- */
+#contact_content {
+    border: 5px solid var(--clr-dark);
+    display: flex;
+    margin: 3.6rem auto .1rem;
+    padding: 4rem 2rem;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* self portrait gif */
+#contact_content img {
+    background-color: var(--clr-dark);
+    width: 100%;
+    max-width: 450px;
+    padding: 1rem;
+}
+
+/* form positioning */
+#contact_form {
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+/* form text deisgn */
+.form_text {
+    color: var(--clr-secondary);
+    background: var(--transparent);
+    font-family: var(--ff-secondary);
+    display: block;
+    width: 100%;
+    margin: 1.2rem 0;
+    padding: 20px 40px;
+    border: 0;
+    outline: none;
+    transition: 0.5s;
+}
+
+/* form darken input when selected */
+.form_text:focus {
+    color: var(--clr-light);
+    background-color: #1b0c41;
+}
+
+/* form input */
+textarea .form_text {
+    height: 120px;
+    resize: none;
+}
+
+/* form button */
+#contact_form button {
+    color: var(--clr-light);
+    background-color: transparent;
+    font-family: var(--ff-primary);
+    float: right;
+    padding: .7rem 3rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-size: 2rem;
+    border: 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* form button hover gimmick */
+#contact_form button:hover{
+    background: var(--clr-dark);
+    font-size: 2.5rem;
+}
+
+/* form input area */
+#content_marquee {
+    overflow: hidden;
+}
+
+#content_marquee .skill_marquee {
+    background-color: var(--transparent);
+    -webkit-text-stroke: 3px var(--clr-accent);
+    position: absolute;
+    width: 100%;
+    margin-top: 7rem;
+}
+
+
+/* ----------------- DYNAMIC STYLING ----------------- */
+/* Small Screens */
+@media (width < 600px) {
+    /* header */
+    #portrait_text {
+        animation: downUp 1s;
+        animation-fill-mode: forwards;
+        animation-delay: .4s;
+    }
+
+    .portrait {
+        animation: leftRight 1s;
+        animation-fill-mode: forwards;
+        animation-delay: .2s;
+    }
+
+    #portrait_shadow {
+        bottom: 2.5%;
+        right: -7%;
+        animation: leftRight 1s;
+        animation-fill-mode: forwards;
+        animation-delay: .3s;
+    }
+
+    .image {
+        background: url('./assets/images/hero/hero-sm.png') no-repeat center;
+        background-size: contain;
+        padding-top: 77%;
+        animation: downUp .7s;        
+    }
+    
+    #hero_links :nth-child(1) {
+        animation: upDown 1s;
+    }
+
+    #hero_links :nth-child(2) {
+        animation: upDown 1.2s;
+    }
+
+    #hero_links :nth-child(3) {
+        animation: upDown 1.4s;
+    }
+
+    #contact_content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+/* Tablet Screens */
+@media (599px < width < 1000px) {
+    /* header */
+    .image {
+        background: url('./assets/images/hero/hero-l.png') no-repeat center;
+        background-size: contain;
+        padding-top: 61%;
+        animation: rightLeft .8s;    
+    }
+
+    #portrait_text {
+        animation: upDown 1s;
+        animation-fill-mode: forwards;
+        animation-delay: .4s;
+    }
+    
+    .portrait {
+        right: -.5rem;
+        bottom: -.5rem;
+        animation: rightLeft .8s;
+        animation-fill-mode: forwards;
+        animation-delay: .2s;
+    }
+
+    #portrait_shadow {
+        bottom: -6%;
+        right: -10%;
+        animation: rightLeft 1s;
+        animation-fill-mode: forwards;
+        animation-delay: .3s;
+    }
+
+    #hero_links :nth-child(1) {
+        animation: rightLeft .5s;
+    }
+
+    #hero_links :nth-child(2) {
+        animation: rightLeft .8s;
+    }
+
+    #hero_links :nth-child(3) {
+        animation: rightLeft 1.1s;
+    }
+
+    /* skills */
+    .technical_content {
+        grid-template-columns: repeat(auto-fit, 11rem);
+        gap: 1rem;
+    }
+
+    /* about */
+    #about_web h2 {
+        grid-column: 1/4;
+        grid-row: 2/2;
+        width: 80%;
+        transform: translateY(2.5rem);
+    }
+
+    #about_web img {
+        grid-column: 2/-1;
+        margin-bottom: -4rem;
+    }
+
+    #about_web p {
+        bottom: .4rem;
+        right: 0;
+        z-index: 2;
+        top: auto;
+        left: auto;
+    }
+    
+    /* contact */
+    #contact_content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+/* Large Screens */
+@media (width > 999px) and (height > 819px) {
+    /* header */
+    #hero_outline {
+        width: 85%;
+        max-width: 1000px;
+    }
+
+    #hero_content {
+        padding: 3rem;
+    }
+
+    #hero_text {
+        margin-top: 2rem;
+        text-align: left;
+        z-index: 2;
+        grid-row: 2/2;
+        grid-column: 1/5;
+        animation: leftRight .7s;
+    }
+
+    #hero_text p {
+        font-size: 1.2rem;
+    }
+    
+    #hero_text h1,
+    #hero_text h2 {
+        font-size: 4rem;
+    }
+
+    #hero_image {
+        width: 65%;
+        margin-right: 0;
+        grid-column: 1/5;
+    }
+
+    .image {
+        background: url('./assets/images/hero/hero-xl.png') no-repeat center;
+        background-size: contain;
+        padding-top: 61%;
+        animation: upDown .8s;
+    }
+    
+    .portrait {
+        right: -.5rem;
+        bottom: -.5rem;
+        animation: leftRight .8s;
+        animation-fill-mode: forwards;
+        animation-delay: .2s;
+    }
+
+    #portrait_shadow {
+        bottom: -6%;
+        right: -10%;
+        animation: leftRight 1s;
+        animation-fill-mode: forwards;
+        animation-delay: .3s;
+    }
+
+    #hero_links {
+        margin-top: 65%;
+        margin-left: 0;
+        z-index: 2;
+        justify-content: top;
+        grid-column: 1/2;
+        grid-row: 2/2;
+    }
+
+    #hero_links :nth-child(1) {
+        animation: leftRight .5s;
+    }
+
+    #hero_links :nth-child(2) {
+        animation: leftRight .8s;
+    }
+
+    #hero_links :nth-child(3) {
+        animation: leftRight 1.1s;
+    }
+
+    /* skills */
+    .technical_content {
+        grid-template-columns: repeat(auto-fit, 11rem);
+        gap: 1rem;
+    }
+
+    /* about */
+    #about_container {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        margin: 6rem auto;
+        max-width: 1000px;
+    }
+    
+    #about_web {
+        margin: 0;
+        animation: rightLeft 1s;
+    }
+
+    #about_art {
+        margin: 1rem;
+        width: 50%;
+    }
+}
+
+/* Landscape Screens */
+@media (width > 100px) and (height < 820px) {
+    /* skills */
+    .technical_content {
+        grid-template-columns: repeat(auto-fit, 11rem);
+        gap: 1rem;
+    }
+    #hero_image {
+        display: none;
+    }
+    #hero_links :nth-child(1) {
+        animation: upDown 1s;
+    }
+
+    #hero_links :nth-child(2) {
+        animation: upDown 1.2s;
+    }
+
+    #hero_links :nth-child(3) {
+        animation: upDown 1.4s;
+    }
+}
+
+
+/* ----------------- ANIMATIONS ----------------- */
+/* marquee */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* skills */
+@keyframes fillBars{
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+}
+  
+  
+@keyframes fillGraph{
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+}
+  
+/* status eye movement */
+@keyframes shake {
+    0% { transform: translate(2px, .5rem) rotate(5deg); }
+    50% { transform: translate(-2px, 1rem) rotate(3deg); }
+    100% { transform: translate(2.5px, .5rem) rotate(5.5deg); }
+} 
+
+@keyframes float {
+    0% { transform: translateY(.5rem); }
+    50% { transform: translateY(1rem); }
+    100% { transform: translateY(.5rem); }
+}
+
+/* status 3D text */
+@keyframes animateText {
+    from {
+        transform: perspective(1000px) rotateY(360deg) rotateX(15deg) translateY(-30px);
+    }
+    to {
+        transform: perspective(1000px) rotateY(0deg) rotateX(15deg) translateY(-30px);
+    }
+}
+
+/* menu icon start up */
+@keyframes popUp {
+  0% { width: 20%; }
+  20% { opacity: 100%; }
+  50% { width: 70%; rotate: 15deg; }
+  100% { opacity: 100%; width: clamp(6rem, 8vw, 8rem); }
+}
+
+/* movement */
+@keyframes downUp {
+	from {
+		transform: translateY(4rem);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes upDown {
+	from {
+		transform: translateY(-4rem);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes leftRight {
+	from {
+		transform: translateX(-4rem);
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes rightLeft {
+	from {
+		transform: translateX(4rem);
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

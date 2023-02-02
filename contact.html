@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicon.svg">
+
+    <!-- CSS SCRIPTS -->
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+</head>
+<body>
+    <main class="contact_page">
+        <nav>
+            <button type="button" id="menu_show" class="menu_animation">
+                <img src="./assets/images/menuIcon.svg">
+            </button>
+            <!-- overlay -->
+            <div class="nav_overlay">
+                <div class="overlay_container">
+                    <button type="button" id="menu_hide">
+                        <img src="./assets/images/menuIcon.svg">
+                    </button>
+                    <ul class="nav_links">
+                        <li><a href="./">Home</a></li>
+                        <li><a href="./professional_projects">Professional<span>Projects</span></a></li>
+                        <li><a href="./personal_projects">Personal<span>Projects</span></a></li>
+                        <li><a href="./contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       <section id="content">
+            <div id="content_marquee">
+                <div class="skill_marquee">
+                    <h1>
+                        unavailable unavailable unavailable unavailable unavailable&nbsp;
+                    </h1>
+                    <h1>
+                        unavailable unavailable unavailable unavailable unavailable&nbsp;
+                    </h1>
+                    </div>
+            </div>
+            <div>
+                <section id="contact_content">
+                    <img src="./assets/images/selfPortrait.gif" alt="">
+                    <form id="contact_form">
+                        <input type="text" class="form_text" id="name" placeholder="Your name">
+                        <input type="email" class="form_text" id="email" placeholder="Your email">
+                        <textarea class="form_text" id="message" placeholder="Your message"></textarea>
+                        <button>Send</button>
+                    </form>
+                </section>
+            </div>
+       </section>
+    </main>
+
+    <!-- JAVASCRIPTS -->
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
